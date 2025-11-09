@@ -1,0 +1,17 @@
+{
+  "default": {
+    "timeout": 60000,
+    "paths": [
+      "src/features/*.feature"
+    ],
+    "require": [
+      "src/stepDefinitions/*.js",
+      "src/pages/*.js",
+      "src/common/*.js" 
+    ],
+    "publishQuiet": true,
+    "format": [
+      "summary"
+    ]
+  }
+}
