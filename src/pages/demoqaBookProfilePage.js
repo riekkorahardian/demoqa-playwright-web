@@ -22,11 +22,27 @@ class demoqaBookProfilePage {
     async confirmDeleteAllBooks() {
         await expect(this.lblHeaderDeleteConfirmation).toBeVisible();
         await expect(this.lblDeleteConfirmation).toBeVisible();
-        await this.btnOkDeleteConfirmation.click();
     }
 
     getUsernameProfile(username) {
         return this.page.getByText(username);
+    }
+
+    async verifyDialog() {        
+        
+        const dialogPromise = this.page.waitForEvent('dialog');
+    
+        //action
+        await this.btnOkDeleteConfirmation.click();
+    
+        //await dialog event 
+        const dialog = await dialogPromise; 
+    
+        //assert dialog message
+        expect(dialog.message()).toBe("No books available in your's collection!");
+    
+        //click ok dialog
+        await dialog.accept();
     }
 
     constructor(page) {

@@ -1,4 +1,5 @@
-const { Given, When, Then } = require('@cucumber/cucumber');
+const { When, Then } = require('@cucumber/cucumber');
+const { expect } = require('@playwright/test');
 const { demoqaBookProfilePage } = require('../pages/demoqaBookProfilePage');
 
 let profilePage;
@@ -16,20 +17,8 @@ When('I click Log out button on Demo Book QA Profile Page', async function () {
 });
 
 When('I should see no books in user profile on Demo Book QA Profile Page', async function () {
-    //initialization
-    const dialogPromise = this.page.waitForEvent('dialog');
-
-    //action
     await profilePage.confirmDeleteAllBooks();
-
-    //await dialog event 
-    const dialog = await dialogPromise; 
-
-    //assert dialog message
-    expect(dialog.message()).toBe("No books available in your's collection!");
-
-    //click ok dialog
-    await dialog.accept();
+    await profilePage.verifyDialog();
 });
 
 When('I click Go To Book Store button', async function () {
