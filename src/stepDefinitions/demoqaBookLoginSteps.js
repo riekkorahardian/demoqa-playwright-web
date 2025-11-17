@@ -12,6 +12,11 @@ Given('I am prepared login process on Demo Book QA Website', async function () {
     await bookPage.navigateToWebsite();
 });
 
+Given('I am prepared login process directly to login page', async function () {
+    loginPage = new demoqaBookLoginPage(this.page);
+    await loginPage.navigateToLoginPage();
+});
+
 When('I am on Demo Book QA Homepage #login', async function () {
     await bookPage.isOnDemoqaBooksPage();
 });

@@ -11,6 +11,10 @@ class demoqaBookLoginPage {
         await expect(this.btnRegister).toBeVisible();
     }
 
+    async navigateToLoginPage() {
+        await this.page.goto('https://demoqa.com/login', { waitUntil: 'domcontentloaded' });
+    }
+
     async inputUserName(username) {
         await this.fieldUserName.fill(username);
     }

@@ -20,19 +20,13 @@ class demoqaBookProfilePage {
     }
 
     async confirmDeleteAllBooks() {
-        await expect(this.lblHeaderDeleteConfirmation).isVisible();
-        await expect(this.lblHeaderDeleteConfirmation).isVisible();
+        await expect(this.lblHeaderDeleteConfirmation).toBeVisible();
+        await expect(this.lblDeleteConfirmation).toBeVisible();
         await this.btnOkDeleteConfirmation.click();
     }
 
     getUsernameProfile(username) {
         return this.page.getByText(username);
-    }
-
-    async validateAndAcceptDialog(page) {
-    const dialog = await dialogPromise;
-    expect(dialog.message()).toBe("No books available in your collection!");
-    await dialog.accept();
     }
 
     constructor(page) {
