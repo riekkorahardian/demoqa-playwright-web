@@ -17,8 +17,13 @@ When('I search for a book with title {string} by scrolling down the page', async
 });
 
 When('I search for a book with text {string} using search feature', async function (title) {
+    bookPage = new demoqaBookPage(this.page);
     await bookPage.searchBook(title);
-});    
+});  
+
+When('I click book with title {string}', async function (title) {
+    await bookPage.clickBookWithTitle(title);
+})
 
 Then('I can found the book {string} on the page', async function (title) {
     await bookPage.scrollAndFind(title); 

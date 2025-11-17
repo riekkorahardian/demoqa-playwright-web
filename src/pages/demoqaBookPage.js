@@ -55,6 +55,14 @@ class demoqaBookPage {
     await expect(publisherLocators).toHaveCount(expectedCount, { timeout: 10000 });
     }
 
+    async tapLoginButton() {
+        await this.btnLogin.click();
+    }
+
+    async clickBookWithTitle(title) {       
+        await this.getBookWithTitle(title).click();
+    }
+
     getBookTitleResult(title) {
         return this.page.getByRole('gridcell', { name: title });
     }
@@ -66,8 +74,11 @@ class demoqaBookPage {
     getBookPublisherResult(publisher) {
         return this.page.getByRole('gridcell', { name: publisher });
     }
-    
 
+    getBookWithTitle(title) {
+        return this.page.getByRole('link', { name: title });
+    }
+    
     constructor(page) {
         this.page = page;
         this.lblHeader = page.getByRole('link').filter({ hasText: /^$/ });
@@ -77,6 +88,7 @@ class demoqaBookPage {
         this.lblPublisherBookTable = page.getByText('Publisher');
         this.fieldSearchBook = page.getByRole('textbox', { name: 'Type to search' });
         this.btnIconSearch = page.locator('#basic-addon2');
+        this.btnLogin = page.getByRole('button', { name: 'Login' });
     }
 }
 module.exports = { demoqaBookPage };

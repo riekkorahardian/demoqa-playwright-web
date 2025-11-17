@@ -1,4 +1,5 @@
-Feature: Demo Book QA Website Testing
+@searchBooks
+Feature: To Search Book on Demo Book QA Website
 
 Scenario: as User, I can search book on website using scrolling
 Given I open the Demo Book QA Website
